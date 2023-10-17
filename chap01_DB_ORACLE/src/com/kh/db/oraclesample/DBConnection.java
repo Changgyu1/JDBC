@@ -16,7 +16,8 @@ public class DBConnection {
 		// selectIf();
 		//selectInsert();
 		//SelectSc();
-		selectAVG();
+		//selectAVG();
+		insertBank();
 	}
 
 	static void SelectBank() {
@@ -288,5 +289,32 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 
+	}
+	static void insertBank() {
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "khbank";
+		String password = "1234";
+		
+		try {
+			Connection con = DriverManager.getConnection(url, user, password);
+			String insertQuery = "INSERT INTO  BANK (account_id, account_number, account_name, balance, branch_name, LAST_TRANSACTION_DATE)"
+					+ "VALUES(?, ?, ?, ?, ?, ?)";
+			
+			PreparedStatement insertState = con.prepareStatement(insertQuery);
+			insertState.setInt(1, 27);
+			insertState.setString(2, "16578211");
+			insertState.setString(3, "사아자");
+			insertState.setDouble(4, 1500.00);
+			insertState.setString(5, "kh");
+			insertState.setDate(6, Date.valueOf("2023-10-16"));
+			
+			int rowsInsert = insertState.executeUpdate();
+			System.out.println(rowsInsert + "row 추가됨");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
