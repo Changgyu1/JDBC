@@ -337,7 +337,7 @@ public class DBConnection {
 			insertState.setDouble(4, 1783.91);
 			insertState.setString(5, "KH");
 			insertState.setDate(6, Date.valueOf("2023-10-17"));
-			
+			 
 			int rowsInsert = insertState.executeUpdate();
 			System.out.println(rowsInsert + " Ãß°¡µÊ ");
 			
