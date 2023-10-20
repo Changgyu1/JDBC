@@ -34,8 +34,10 @@ public class CafeModel {
 			ps.setString(2, cafeDTO.getMname());
 			
 			int rowUpdate = ps.executeUpdate();
-			
+			connection.close();
+			ps.close();
 			return rowUpdate > 0;
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

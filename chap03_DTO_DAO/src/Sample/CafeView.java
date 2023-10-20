@@ -33,5 +33,7 @@ public class CafeView {
 		}else {
 			System.out.println("업데이트중 오류가 발생하였습니다.");
 		}
+		sc.close();
+
 	}
 }
