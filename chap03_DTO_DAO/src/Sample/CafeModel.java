@@ -28,7 +28,7 @@ public class CafeModel {
 		String upSql = "UPDATE menu SET price = ? WHERE mname = ?";
 		
 		try {
-			PreparedStatement ps = connection.prepareCall(upSql);
+			PreparedStatement ps = connection.prepareStatement(upSql);
 			
 			ps.setDouble(1, cafeDTO.getPrice());
 			ps.setString(2, cafeDTO.getMname());
