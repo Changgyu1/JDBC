@@ -149,43 +149,39 @@ public class UserMain {
 			e.printStackTrace();
 		}
 	}
-	public static boolean checkId(int id) {
+	public static boolean checkId(int id) throws SQLException{
 		String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
 		String dbUserName = "khcafe";
 		String dbPassWord = "kh1234";
-		try {
 			Connection conn = DriverManager.getConnection(jdbcURL, dbUserName, dbPassWord);
-			String sql = "SELECT * FROM USERINFO";
+			String sql = "SELECT * FROM USERINFO WHERE user_id = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				return rs.next();
+				int ids = rs.getInt(1);
+				return ids > 0;
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return false;
 
 	}
-	public static boolean checkEmail(String email) {
+	public static boolean checkEmail(String email) throws SQLException {
 		String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
 		String dbUserName = "khcafe";
 		String dbPassWord = "kh1234";
-		try {
+
 			Connection conn = DriverManager.getConnection(jdbcURL, dbUserName, dbPassWord);
-			String sql = "SELECT * FROM USERINFO";
+			String sql = "SELECT COUNT(*) FROM USERINFO WHERE email = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				return rs.next();
+				int count = rs.getInt(1);
+				return count > 0;
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		return false;
 	}
 }
