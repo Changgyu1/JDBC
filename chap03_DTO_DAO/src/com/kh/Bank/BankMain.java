@@ -38,7 +38,7 @@ public class BankMain {
 			String sql = "SELECT * FROM bank WHERE account_id = ? AND account_number = ?";
 			PreparedStatement st = cc.prepareStatement(sql);
 			st.setInt(1, accountId);
-			st.setString(2, account_number);
+			st.setString(2, account_number); 
 			ResultSet rs = st.executeQuery();
 
 			String sql2 = "SELECT * FROM bank WHERE account_number = ?";
