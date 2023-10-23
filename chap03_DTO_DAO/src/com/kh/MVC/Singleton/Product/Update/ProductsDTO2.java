@@ -49,7 +49,6 @@ public class ProductsDTO2 {
 
 	public ProductsDTO2() {
 	}
-
 	public ProductsDTO2(int product_id, String product_name, String category, double price, int stock_quantity) {
 		this.product_id = product_id;
 		this.product_name = product_name;
